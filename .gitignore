@@ -30,3 +30,4 @@ activemq-data
 .DS_Store
 dump.rdb
 transaction-logs
+out
