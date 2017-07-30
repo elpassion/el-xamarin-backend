@@ -27,7 +27,6 @@ activemq-data
 *.ipr
 *.iws
 .idea
-*.jar
 .DS_Store
 dump.rdb
 transaction-logs
