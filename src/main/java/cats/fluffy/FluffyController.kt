@@ -1,14 +1,20 @@
 package cats.fluffy
 
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
-import java.util.concurrent.atomic.AtomicLong
+import org.springframework.web.bind.annotation.*
 
 @RestController
-class FluffyController {
+@RequestMapping("/fluffy")
+class FluffyController(val fluffyRepo: FluffyRepository) {
 
-    val fluffyCounter = AtomicLong()
+    @GetMapping("/add")
+    @ResponseBody
+    fun addFluffy(@RequestParam name: String): String {
+        val fluffy = Fluffy(name = name)
+        fluffyRepo.save(fluffy)
+        return "SAVED!"
+    }
 
-    @RequestMapping("/fluffy")
-    fun fluffy() = Fluffy(id = fluffyCounter.incrementAndGet(), name = "Fluffy")
+    @GetMapping("/all")
+    @ResponseBody
+    fun allFluffies() = fluffyRepo.findAll()
 }
