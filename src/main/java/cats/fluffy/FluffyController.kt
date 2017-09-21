@@ -3,7 +3,7 @@ package cats.fluffy
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/fluffy")
+@RequestMapping("/api")
 class FluffyController(val fluffyRepo: FluffyRepository) {
 
     @GetMapping("/add")
@@ -21,7 +21,11 @@ class FluffyController(val fluffyRepo: FluffyRepository) {
         return "DELETED"
     }
 
-    @GetMapping("/all")
+    @GetMapping("/item")
     @ResponseBody
     fun allFluffies() = fluffyRepo.findAll()
+
+    @GetMapping("/item")
+    @ResponseBody
+    fun fluffy(@RequestParam id: Long) = fluffyRepo.findOne(id)
 }
