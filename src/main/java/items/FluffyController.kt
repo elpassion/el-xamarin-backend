@@ -23,9 +23,5 @@ class FluffyController(val fluffyRepo: FluffyRepository) {
 
     @GetMapping("/items")
     @ResponseBody
-    fun allFluffies() = fluffyRepo.findAll()
-
-    @GetMapping("/item")
-    @ResponseBody
-    fun fluffy(@RequestParam id: Long) = fluffyRepo.findOne(id)
+    fun allFluffies(): MutableIterable<Fluffy> = fluffyRepo.findAll()
 }
