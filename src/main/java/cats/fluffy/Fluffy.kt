@@ -7,7 +7,9 @@ import javax.persistence.Id
 
 @Entity
 data class Fluffy(
-        val name: String,
+        val text: String,
+
+        val description: String,
 
         @Id @GeneratedValue(strategy = GenerationType.AUTO)
         val id: Long = -1)

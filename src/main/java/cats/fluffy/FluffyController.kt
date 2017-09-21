@@ -8,8 +8,8 @@ class FluffyController(val fluffyRepo: FluffyRepository) {
 
     @GetMapping("/add")
     @ResponseBody
-    fun addFluffy(@RequestParam name: String): String {
-        val fluffy = Fluffy(name = name)
+    fun addFluffy(@RequestParam text: String, @RequestParam description: String): String {
+        val fluffy = Fluffy(text = text, description = description)
         fluffyRepo.save(fluffy)
         return "SAVED!"
     }
