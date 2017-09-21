@@ -1,4 +1,4 @@
-package cats.fluffy
+package items
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -6,7 +6,7 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class Fluffy(
+data class Item(
         val text: String,
 
         val description: String,

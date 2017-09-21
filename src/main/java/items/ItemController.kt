@@ -1,31 +1,31 @@
-package cats.fluffy
+package items
 
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api")
-class FluffyController(val fluffyRepo: FluffyRepository) {
+class ItemController(val itemRepo: ItemRepository) {
 
     @GetMapping("/add")
     @ResponseBody
     fun addFluffy(@RequestParam text: String, @RequestParam description: String): String {
-        val fluffy = Fluffy(text = text, description = description)
-        fluffyRepo.save(fluffy)
+        val fluffy = Item(text = text, description = description)
+        itemRepo.save(fluffy)
         return "SAVED!"
     }
 
     @GetMapping("/delete")
     @ResponseBody
     fun removeFluffy(@RequestParam id: Long): String {
-        fluffyRepo.delete(id)
+        itemRepo.delete(id)
         return "DELETED"
     }
 
     @GetMapping("/item")
     @ResponseBody
-    fun allFluffies() = fluffyRepo.findAll()
+    fun allFluffies() = itemRepo.findAll()
 
     @GetMapping("/item")
     @ResponseBody
-    fun fluffy(@RequestParam id: Long) = fluffyRepo.findOne(id)
+    fun fluffy(@RequestParam id: Long) = itemRepo.findOne(id)
 }
