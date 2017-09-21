@@ -4,28 +4,28 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api")
-class ItemController(val itemRepo: ItemRepository) {
+class FluffyController(val fluffyRepo: FluffyRepository) {
 
     @GetMapping("/add")
     @ResponseBody
     fun addFluffy(@RequestParam text: String, @RequestParam description: String): String {
-        val fluffy = Item(text = text, description = description)
-        itemRepo.save(fluffy)
+        val fluffy = Fluffy(text = text, description = description)
+        fluffyRepo.save(fluffy)
         return "SAVED!"
     }
 
     @GetMapping("/delete")
     @ResponseBody
     fun removeFluffy(@RequestParam id: Long): String {
-        itemRepo.delete(id)
+        fluffyRepo.delete(id)
         return "DELETED"
     }
 
-    @GetMapping("/item")
+    @GetMapping("/items")
     @ResponseBody
-    fun allFluffies() = itemRepo.findAll()
+    fun allFluffies() = fluffyRepo.findAll()
 
     @GetMapping("/item")
     @ResponseBody
-    fun fluffy(@RequestParam id: Long) = itemRepo.findOne(id)
+    fun fluffy(@RequestParam id: Long) = fluffyRepo.findOne(id)
 }

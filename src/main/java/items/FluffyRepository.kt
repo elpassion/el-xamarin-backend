@@ -2,4 +2,4 @@ package items
 
 import org.springframework.data.repository.CrudRepository
 
-interface ItemRepository : CrudRepository<Item, Long>
+interface FluffyRepository : CrudRepository<Fluffy, Long>

@@ -6,7 +6,7 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class Item(
+data class Fluffy(
         val text: String,
 
         val description: String,
