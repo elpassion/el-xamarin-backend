@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*
 class FluffyController(val fluffyRepo: FluffyRepository) {
 
     @PostMapping(value = "items")
-    fun addFluffy(@RequestBody fluffy: Fluffy): String {
+    fun addFluffy(@RequestParam text: String, description: String): String {
+        val fluffy = Fluffy(text = text, description = description)
         fluffyRepo.save(fluffy)
         return "SAVED!"
     }
