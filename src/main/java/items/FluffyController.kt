@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api")
 class FluffyController(val fluffyRepo: FluffyRepository) {
 
-    @GetMapping("/add")
+    @PostMapping("/add")
     @ResponseBody
     fun addFluffy(@RequestParam text: String, @RequestParam description: String): String {
         val fluffy = Fluffy(text = text, description = description)
