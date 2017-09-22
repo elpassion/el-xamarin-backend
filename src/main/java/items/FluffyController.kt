@@ -14,8 +14,8 @@ class FluffyController(val fluffyRepo: FluffyRepository) {
     }
 
     @DeleteMapping("/delete")
-    fun removeFluffy(@RequestParam id: Long): String {
-        fluffyRepo.delete(id)
+    fun removeFluffy(@RequestParam id: String): String {
+        fluffyRepo.delete(id.toLong())
         return "DELETED"
     }
 
